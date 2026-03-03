@@ -151,6 +151,7 @@
     <div class="logo"><span class="logo-dot"></span>margin.at</div>
     <div class="header-right">
       <span id="auth-badge"></span>
+      <button class="btn btn-ghost" id="backup-btn" style="display:none" onclick="exportAllAccount()">Export all</button>
       <button class="btn btn-ghost" id="logout-btn" style="display:none" onclick="logout()">Sign out</button>
     </div>
   </header>
@@ -191,6 +192,17 @@
     <!-- Main -->
     <main id="main-panel" style="display:none"></main>
 
+  </div>
+</div>
+
+<!-- Backup Progress Modal -->
+<div class="modal-overlay" id="backup-modal">
+  <div class="modal" style="text-align:center">
+    <h3>Exporting all annotations</h3>
+    <p id="backup-status" style="margin-bottom:8px">Fetching records&#8230;</p>
+    <div style="width:100%;height:4px;background:var(--rule);border-radius:2px;overflow:hidden;margin-bottom:0">
+      <div id="backup-progress-bar" style="height:100%;width:0%;background:var(--accent);border-radius:2px;transition:width 0.2s"></div>
+    </div>
   </div>
 </div>
 
@@ -380,6 +392,7 @@ function onLoggedIn() {
   document.getElementById('main-panel').style.display      = 'flex';
   document.getElementById('main-panel').style.flexDirection = 'column';
   document.getElementById('logout-btn').style.display      = '';
+  document.getElementById('backup-btn').style.display       = '';
   var badge = document.getElementById('auth-badge');
   badge.textContent = session.handle;
   badge.style.display = '';
@@ -395,6 +408,7 @@ function logout() {
   document.getElementById('sidebar').style.display       = 'none';
   document.getElementById('main-panel').style.display    = 'none';
   document.getElementById('logout-btn').style.display    = 'none';
+  document.getElementById('backup-btn').style.display     = 'none';
   document.getElementById('auth-badge').style.display    = 'none';
   document.getElementById('handle-input').value          = '';
   document.getElementById('password-input').value        = '';
@@ -701,7 +715,78 @@ function download(filename, content, type) {
   URL.revokeObjectURL(a.href);
 }
 
-// ── Toast ──────────────────────────────────────────────────────────────────
+// ── Account-wide backup ────────────────────────────────────────────────────
+async function exportAllAccount() {
+  var modal      = document.getElementById('backup-modal');
+  var statusEl   = document.getElementById('backup-status');
+  var progressEl = document.getElementById('backup-progress-bar');
+
+  function setStatus(msg, pct) {
+    statusEl.textContent = msg;
+    progressEl.style.width = (pct || 0) + '%';
+  }
+
+  modal.classList.add('open');
+  setStatus('Fetching annotations\u2026', 5);
+
+  try {
+    var allRecords = [];
+    var nsids = [NSID.annotation, NSID.highlight, NSID.bookmark];
+
+    for (var i = 0; i < nsids.length; i++) {
+      setStatus('Fetching ' + nsids[i].split('.').pop() + 's\u2026', 5 + (i / nsids.length) * 80);
+      var recs = await listRecordsAll(session.did, nsids[i]);
+      allRecords = allRecords.concat(recs.map(function(r) { r._nsid = nsids[i]; return r; }));
+    }
+
+    setStatus('Building CSV\u2026', 90);
+
+    var cols = ['url', 'text', 'title', 'tags', 'color', 'created_at', 'type', 'uri'];
+    var rows = allRecords.map(function(rec) {
+      var val   = rec.value || {};
+      var type  = annType(rec);
+      var url   = (val.target && val.target.source) || '';
+      var text  = (val.target && val.target.selector && val.target.selector.exact) ||
+                  (val.body && val.body.value) ||
+                  (typeof val.body === 'string' ? val.body : '');
+      var title = (val.target && val.target.title) || '';
+      var tags  = (val.tags || []).join('; ');
+      var color = val.color || val.highlightColor || '';
+      var created_at = val.createdAt || '';
+      return {
+        url:        url,
+        text:       text,
+        title:      title,
+        tags:       tags,
+        color:      color,
+        created_at: created_at,
+        type:       type,
+        uri:        rec.uri || ''
+      };
+    });
+
+    var csv = [cols.join(',')].concat(rows.map(function(r) {
+      return cols.map(function(c) { return csvCell(r[c]); }).join(',');
+    })).join('\n');
+
+    setStatus('Done! Downloading\u2026', 100);
+
+    var date = new Date().toISOString().slice(0, 10);
+    download('margin_backup_' + date + '.csv', csv, 'text/csv');
+
+    setTimeout(function() {
+      modal.classList.remove('open');
+      toast('Exported ' + allRecords.length + ' annotation' + (allRecords.length !== 1 ? 's' : ''));
+    }, 600);
+
+  } catch(e) {
+    setStatus('Error: ' + e.message, 0);
+    setTimeout(function() { modal.classList.remove('open'); }, 2500);
+    toast('Backup failed: ' + e.message, true);
+  }
+}
+
+
 var toastTimer;
 function toast(msg, isError) {
   var el = document.getElementById('toast');
