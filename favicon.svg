@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Left bracket derived from actual logo -->
+  <path d="M4 4 L4 28 L20 28 L20 25 L7 25 L7 7 L20 7 L20 4 Z" fill="#027bff"/>
+  <!-- Arrow shaft -->
+  <line x1="11" y1="16" x2="23" y2="16" stroke="#027bff" stroke-width="2" stroke-linecap="round"/>
+  <!-- Arrow head -->
+  <polyline points="19,12.5 23,16 19,19.5" fill="none" stroke="#027bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right bracket vertical bar -->
+  <rect x="26" y="4" width="2.5" height="24" rx="1.2" fill="#027bff"/>
+</svg>

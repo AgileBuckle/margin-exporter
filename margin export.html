@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>margin.at — Annotation Viewer</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
@@ -33,7 +34,6 @@
   #auth-badge { font-size: 12px; color: var(--ink-light); font-family: 'DM Mono', monospace; display: none; }
   .body-wrap { display: flex; flex: 1; overflow: hidden; }
 
-  /* Sidebar */
   aside { width: var(--sidebar-w); border-right: 1px solid var(--rule); background: var(--white); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
   .sidebar-section { padding: 20px 16px 12px; border-bottom: 1px solid var(--rule); }
   .sidebar-label { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
@@ -46,10 +46,8 @@
   .coll-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-faint); background: var(--cream); padding: 1px 6px; border-radius: 10px; flex-shrink: 0; }
   .sidebar-empty { padding: 12px 10px; font-size: 13px; color: var(--ink-faint); font-style: italic; }
 
-  /* Main */
   main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
 
-  /* Login */
   #login-screen { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
   .login-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 40px 44px; width: 100%; max-width: 440px; box-shadow: 0 2px 24px rgba(0,0,0,0.04); }
   .login-card h2 { font-family: 'Lora', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
@@ -63,7 +61,6 @@
   .hint { font-size: 11.5px; color: var(--ink-faint); margin-top: 5px; }
   .hint a { color: var(--accent); text-decoration: none; }
 
-  /* Buttons */
   .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all 0.14s; outline: none; }
   .btn-primary { background: var(--ink); color: var(--white); width: 100%; justify-content: center; margin-top: 8px; padding: 11px; font-size: 14px; }
   .btn-primary:hover { background: #2e2b27; }
@@ -71,20 +68,17 @@
   .btn-ghost { background: none; color: var(--ink-light); border-color: var(--rule); font-size: 12.5px; padding: 6px 13px; }
   .btn-ghost:hover { background: var(--cream); color: var(--ink); }
 
-  /* Toolbar */
   .toolbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; border-bottom: 1px solid var(--rule); background: var(--white); flex-shrink: 0; gap: 12px; flex-wrap: wrap; }
   .toolbar-left { display: flex; flex-direction: column; gap: 2px; }
   .toolbar-title { font-family: 'Lora', serif; font-size: 18px; font-weight: 500; }
   .toolbar-meta { font-size: 12px; color: var(--ink-faint); font-family: 'DM Mono', monospace; }
   .toolbar-right { display: flex; gap: 8px; align-items: center; }
 
-  /* Filter bar */
   .filter-bar { padding: 12px 28px; border-bottom: 1px solid var(--rule); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .type-pill { padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid var(--rule); background: none; color: var(--ink-light); font-family: 'DM Sans', sans-serif; transition: all 0.12s; }
   .type-pill:hover { border-color: var(--ink-faint); color: var(--ink); }
   .type-pill.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
-  /* Cards */
   .annotations-wrap { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
   .annotation-card { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 24px; transition: box-shadow 0.15s, border-color 0.15s; animation: fadeUp 0.2s ease both; }
   .annotation-card:hover { box-shadow: 0 3px 16px rgba(0,0,0,0.06); border-color: #d8d4ce; }
@@ -106,7 +100,6 @@
   .tags-wrap { display: flex; gap: 5px; flex-wrap: wrap; }
   .tag { font-size: 11px; color: var(--ink-light); background: var(--cream); border: 1px solid var(--rule); padding: 1px 8px; border-radius: 10px; }
 
-  /* States */
   .state-box { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--ink-faint); padding: 60px 20px; text-align: center; }
   .state-icon { font-size: 36px; line-height: 1; }
   .state-title { font-size: 16px; color: var(--ink-light); font-weight: 500; }
@@ -115,12 +108,10 @@
   .spinner { width: 26px; height: 26px; border: 2.5px solid var(--rule); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.75s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Toast */
   #toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--white); font-size: 13px; padding: 10px 18px; border-radius: 8px; opacity: 0; pointer-events: none; transform: translateY(6px); transition: all 0.2s; z-index: 999; max-width: 320px; }
   #toast.show { opacity: 1; transform: translateY(0); }
   #toast.error { background: var(--error); }
 
-  /* Modal */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal { background: var(--white); border-radius: 12px; padding: 32px 36px; width: 360px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); transform: translateY(8px); transition: transform 0.15s; }
@@ -135,6 +126,9 @@
   .export-ext { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-faint); }
   .modal-footer { margin-top: 16px; display: flex; justify-content: flex-end; }
 
+  .fixed-attribution { position: fixed; bottom: 14px; left: 16px; font-size: 11.5px; color: var(--ink-faint); z-index: 50; }
+  .fixed-attribution a { color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.12s; }
+  .fixed-attribution a:hover { color: var(--ink-light); }
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 10px; }
@@ -163,7 +157,6 @@
 
   <div class="body-wrap">
 
-    <!-- Login -->
     <div id="login-screen" style="width:100%">
       <div class="login-card">
         <h2>Sign in to margin.at</h2>
@@ -184,7 +177,6 @@
       </div>
     </div>
 
-    <!-- Sidebar -->
     <aside id="sidebar" style="display:none">
       <div class="sidebar-section">
         <div class="sidebar-label">Collections</div>
@@ -194,13 +186,11 @@
       </div>
     </aside>
 
-    <!-- Main -->
     <main id="main-panel" style="display:none"></main>
 
   </div>
 </div>
 
-<!-- Backup Progress Modal -->
 <div class="modal-overlay" id="backup-modal">
   <div class="modal" style="text-align:center">
     <h3>Exporting all annotations</h3>
@@ -211,7 +201,6 @@
   </div>
 </div>
 
-<!-- Export Modal -->
 <div class="modal-overlay" id="export-modal">
   <div class="modal">
     <h3>Export annotations</h3>
@@ -243,7 +232,6 @@
 <div id="toast"></div>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
 var session           = null;
 var pdsBase           = 'https://bsky.social';
 var allCollections    = [];
@@ -262,7 +250,6 @@ var NSID = {
 
 var STORAGE_KEY = 'margin_at_creds';
 
-// ── Credential cache ───────────────────────────────────────────────────────
 function saveCreds(handle, password) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ handle: handle, password: password })); } catch(e) {}
 }
@@ -273,7 +260,6 @@ function clearCreds() {
   try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
 }
 
-// Pre-fill form on load
 (function prefill() {
   var c = loadCreds();
   if (!c) return;
@@ -281,7 +267,6 @@ function clearCreds() {
   document.getElementById('password-input').value = c.password || '';
 })();
 
-// ── AT Protocol helpers ────────────────────────────────────────────────────
 async function atRequest(path, params, method, body) {
   params = params || {};
   method = method || 'GET';
@@ -329,9 +314,7 @@ function uriFrom(field) {
   return null;
 }
 
-// ── Auth ───────────────────────────────────────────────────────────────────
 async function resolvePds(handle) {
-  // Try custom domain well-known first, then fall back to bsky.social resolver
   var did = null;
   try {
     var r = await fetch('https://' + handle + '/.well-known/atproto-did');
@@ -344,7 +327,6 @@ async function resolvePds(handle) {
     did = (await r2.json()).did;
   }
 
-  // Fetch DID document to find PDS
   var didDoc;
   if (did.startsWith('did:plc:')) {
     var r3 = await fetch('https://plc.directory/' + did);
@@ -431,7 +413,6 @@ function hideLoginError() {
 document.getElementById('handle-input').addEventListener('keydown',   function(e) { if (e.key === 'Enter') login(); });
 document.getElementById('password-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') login(); });
 
-// ── Collections ────────────────────────────────────────────────────────────
 async function loadCollections() {
   var listEl = document.getElementById('collection-list');
   listEl.innerHTML = '<li class="sidebar-empty">Loading\u2026</li>';
@@ -506,7 +487,6 @@ async function fetchAnnotationsForCollection(collectionUri) {
     .map(function(r) { return r.value; });
 }
 
-// ── Render ─────────────────────────────────────────────────────────────────
 function renderLoading(msg) {
   document.getElementById('main-panel').innerHTML =
     '<div class="state-box"><div class="spinner"></div><div class="state-title">' + escHtml(msg || 'Loading\u2026') + '</div></div>';
@@ -602,7 +582,6 @@ function setFilter(type, btn) {
   renderCards(activeAnnotations);
 }
 
-// ── Export ─────────────────────────────────────────────────────────────────
 function openExportModal() {
   var name = (activeCollection && activeCollection.value && activeCollection.value.name) || 'collection';
   document.getElementById('export-modal-desc').textContent =
@@ -720,7 +699,6 @@ function download(filename, content, type) {
   URL.revokeObjectURL(a.href);
 }
 
-// ── Account-wide backup ────────────────────────────────────────────────────
 async function exportAllAccount() {
   var modal      = document.getElementById('backup-modal');
   var statusEl   = document.getElementById('backup-status');
@@ -791,7 +769,6 @@ async function exportAllAccount() {
   }
 }
 
-
 var toastTimer;
 function toast(msg, isError) {
   var el = document.getElementById('toast');
@@ -801,7 +778,6 @@ function toast(msg, isError) {
   toastTimer = setTimeout(function() { el.className = ''; }, 2800);
 }
 
-// ── Utilities ──────────────────────────────────────────────────────────────
 function annType(rec) {
   var nsid = rec._nsid || (rec.uri && rec.uri.split('/')[2]) || 'annotation';
   return nsid.split('.').pop();
@@ -817,5 +793,6 @@ function formatDate(iso) {
   catch(e) { return iso; }
 }
 </script>
+<div class="fixed-attribution">Made with Claude &nbsp;&#183;&nbsp; <a href="https://github.com/AgileBuckle/margin-exporter" target="_blank">GitHub</a></div>
 </body>
 </html>
