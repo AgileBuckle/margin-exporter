@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>margin.at — Annotation Viewer</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
@@ -34,6 +33,7 @@
   #auth-badge { font-size: 12px; color: var(--ink-light); font-family: 'DM Mono', monospace; display: none; }
   .body-wrap { display: flex; flex: 1; overflow: hidden; }
 
+  /* Sidebar */
   aside { width: var(--sidebar-w); border-right: 1px solid var(--rule); background: var(--white); display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto; }
   .sidebar-section { padding: 20px 16px 12px; border-bottom: 1px solid var(--rule); }
   .sidebar-label { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
@@ -46,8 +46,10 @@
   .coll-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-faint); background: var(--cream); padding: 1px 6px; border-radius: 10px; flex-shrink: 0; }
   .sidebar-empty { padding: 12px 10px; font-size: 13px; color: var(--ink-faint); font-style: italic; }
 
+  /* Main */
   main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
 
+  /* Login */
   #login-screen { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
   .login-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 40px 44px; width: 100%; max-width: 440px; box-shadow: 0 2px 24px rgba(0,0,0,0.04); }
   .login-card h2 { font-family: 'Lora', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
@@ -61,6 +63,7 @@
   .hint { font-size: 11.5px; color: var(--ink-faint); margin-top: 5px; }
   .hint a { color: var(--accent); text-decoration: none; }
 
+  /* Buttons */
   .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all 0.14s; outline: none; }
   .btn-primary { background: var(--ink); color: var(--white); width: 100%; justify-content: center; margin-top: 8px; padding: 11px; font-size: 14px; }
   .btn-primary:hover { background: #2e2b27; }
@@ -68,17 +71,20 @@
   .btn-ghost { background: none; color: var(--ink-light); border-color: var(--rule); font-size: 12.5px; padding: 6px 13px; }
   .btn-ghost:hover { background: var(--cream); color: var(--ink); }
 
+  /* Toolbar */
   .toolbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; border-bottom: 1px solid var(--rule); background: var(--white); flex-shrink: 0; gap: 12px; flex-wrap: wrap; }
   .toolbar-left { display: flex; flex-direction: column; gap: 2px; }
   .toolbar-title { font-family: 'Lora', serif; font-size: 18px; font-weight: 500; }
   .toolbar-meta { font-size: 12px; color: var(--ink-faint); font-family: 'DM Mono', monospace; }
   .toolbar-right { display: flex; gap: 8px; align-items: center; }
 
+  /* Filter bar */
   .filter-bar { padding: 12px 28px; border-bottom: 1px solid var(--rule); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
   .type-pill { padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid var(--rule); background: none; color: var(--ink-light); font-family: 'DM Sans', sans-serif; transition: all 0.12s; }
   .type-pill:hover { border-color: var(--ink-faint); color: var(--ink); }
   .type-pill.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
+  /* Cards */
   .annotations-wrap { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
   .annotation-card { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 24px; transition: box-shadow 0.15s, border-color 0.15s; animation: fadeUp 0.2s ease both; }
   .annotation-card:hover { box-shadow: 0 3px 16px rgba(0,0,0,0.06); border-color: #d8d4ce; }
@@ -100,6 +106,7 @@
   .tags-wrap { display: flex; gap: 5px; flex-wrap: wrap; }
   .tag { font-size: 11px; color: var(--ink-light); background: var(--cream); border: 1px solid var(--rule); padding: 1px 8px; border-radius: 10px; }
 
+  /* States */
   .state-box { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--ink-faint); padding: 60px 20px; text-align: center; }
   .state-icon { font-size: 36px; line-height: 1; }
   .state-title { font-size: 16px; color: var(--ink-light); font-weight: 500; }
@@ -108,10 +115,12 @@
   .spinner { width: 26px; height: 26px; border: 2.5px solid var(--rule); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.75s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* Toast */
   #toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--white); font-size: 13px; padding: 10px 18px; border-radius: 8px; opacity: 0; pointer-events: none; transform: translateY(6px); transition: all 0.2s; z-index: 999; max-width: 320px; }
   #toast.show { opacity: 1; transform: translateY(0); }
   #toast.error { background: var(--error); }
 
+  /* Modal */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
   .modal { background: var(--white); border-radius: 12px; padding: 32px 36px; width: 360px; box-shadow: 0 8px 40px rgba(0,0,0,0.12); transform: translateY(8px); transition: transform 0.15s; }
@@ -126,16 +135,42 @@
   .export-ext { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink-faint); }
   .modal-footer { margin-top: 16px; display: flex; justify-content: flex-end; }
 
+  .sidebar-attribution { padding: 14px 16px; margin-top: auto; font-size: 11.5px; color: var(--ink-faint); }
+  .sidebar-attribution a { color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.12s; }
+  .sidebar-attribution a:hover { color: var(--ink-light); }
   .fixed-attribution { position: fixed; bottom: 14px; left: 16px; font-size: 11.5px; color: var(--ink-faint); z-index: 50; }
   .fixed-attribution a { color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.12s; }
   .fixed-attribution a:hover { color: var(--ink-light); }
-  ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 10px; }
   @media (max-width: 640px) {
     aside { width: 200px; }
     .toolbar, .filter-bar, .annotations-wrap { padding-left: 16px; padding-right: 16px; }
   }
+
+  /* ── NEW: Selectable cards (Browse All mode) ── */
+  .annotation-card.selectable { cursor: pointer; position: relative; padding-left: 52px; }
+  .annotation-card.selectable .card-checkbox { position: absolute; left: 18px; top: 22px; width: 17px; height: 17px; accent-color: var(--accent); cursor: pointer; }
+  .annotation-card.selectable.selected { border-color: var(--accent); background: var(--accent-light); }
+
+  /* ── NEW: Tag filter modal ── */
+  .modal-wide { width: 480px; }
+  .tag-filter-list { display: flex; flex-wrap: wrap; gap: 8px; max-height: 200px; overflow-y: auto; margin-bottom: 20px; padding: 12px; background: var(--cream); border: 1px solid var(--rule); border-radius: 8px; }
+  .tag-filter-chip { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid var(--rule); background: var(--white); color: var(--ink-light); font-family: 'DM Sans', sans-serif; transition: all 0.12s; }
+  .tag-filter-chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+  .tag-filter-chip.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+  .tag-filter-chip.none-tag { font-style: italic; }
+
+  /* ── NEW: Date range filter in browse-all bar ── */
+  .date-filter-wrap { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+  .date-filter-wrap label { font-size: 11px; color: var(--ink-faint); font-weight: 500; letter-spacing: 0.3px; margin-bottom: 0; }
+  .date-filter-wrap input[type="date"] { padding: 4px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--cream); font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink); outline: none; transition: border-color 0.15s; width: 130px; }
+  .date-filter-wrap input[type="date"]:focus { border-color: var(--accent); background: var(--white); }
+
+  /* ── NEW: Selection action bar ── */
+  .select-bar { display: flex; align-items: center; gap: 10px; padding: 10px 28px; background: var(--accent-light); border-bottom: 1px solid #e8cfc0; flex-shrink: 0; flex-wrap: wrap; }
+  .select-bar-count { font-size: 13px; font-weight: 500; color: var(--accent); flex: 1; }
+  .select-bar .btn-ghost { font-size: 12px; padding: 5px 11px; }
 </style>
 </head>
 <body>
@@ -157,6 +192,7 @@
 
   <div class="body-wrap">
 
+    <!-- Login -->
     <div id="login-screen" style="width:100%">
       <div class="login-card">
         <h2>Sign in to margin.at</h2>
@@ -177,7 +213,17 @@
       </div>
     </div>
 
+    <!-- Sidebar -->
     <aside id="sidebar" style="display:none">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Browse</div>
+        <ul class="collection-list">
+          <li class="collection-item" id="browse-all-item" onclick="openBrowseAll()">
+            <span class="coll-name">All annotations</span>
+            <span class="coll-count" id="browse-all-count">&mdash;</span>
+          </li>
+        </ul>
+      </div>
       <div class="sidebar-section">
         <div class="sidebar-label">Collections</div>
         <ul class="collection-list" id="collection-list">
@@ -191,6 +237,7 @@
   </div>
 </div>
 
+<!-- Backup Progress Modal -->
 <div class="modal-overlay" id="backup-modal">
   <div class="modal" style="text-align:center">
     <h3>Exporting all annotations</h3>
@@ -201,6 +248,7 @@
   </div>
 </div>
 
+<!-- Export Modal -->
 <div class="modal-overlay" id="export-modal">
   <div class="modal">
     <h3>Export annotations</h3>
@@ -229,15 +277,88 @@
   </div>
 </div>
 
+<!-- NEW: Tag Export Modal -->
+<div class="modal-overlay" id="tag-export-modal">
+  <div class="modal modal-wide">
+    <h3>Export by tag</h3>
+    <p id="tag-export-desc">Select one or more tags to export. Only annotations with those tags will be included.</p>
+    <div class="tag-filter-list" id="tag-export-list"></div>
+    <div class="export-options">
+      <button class="export-btn" onclick="doTagExport('json')">
+        <div class="export-btn-info"><div class="name">JSON</div><div class="desc">Full data, great for developers</div></div>
+        <span class="export-ext">.json</span>
+      </button>
+      <button class="export-btn" onclick="doTagExport('csv')">
+        <div class="export-btn-info"><div class="name">CSV</div><div class="desc">Spreadsheet-friendly, flat table</div></div>
+        <span class="export-ext">.csv</span>
+      </button>
+      <button class="export-btn" onclick="doTagExport('md')">
+        <div class="export-btn-info"><div class="name">Markdown</div><div class="desc">Full notes with metadata</div></div>
+        <span class="export-ext">.md</span>
+      </button>
+      <button class="export-btn" onclick="doTagExport('clean')">
+        <div class="export-btn-info"><div class="name">Beautified</div><div class="desc">Just the quotes and notes</div></div>
+        <span class="export-ext">.md</span>
+      </button>
+    </div>
+    <div class="modal-footer" style="gap:8px">
+      <span id="tag-export-count" style="font-size:12px;color:var(--ink-faint);margin-right:auto;font-family:'DM Mono',monospace"></span>
+      <button class="btn btn-ghost" onclick="closeTagExportModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW: Selection Export Modal (browse-all) -->
+<div class="modal-overlay" id="selection-export-modal">
+  <div class="modal">
+    <h3>Export selection</h3>
+    <p id="selection-export-desc">Choose a format to download your selected annotations.</p>
+    <div class="export-options">
+      <button class="export-btn" onclick="doSelectionExport('json')">
+        <div class="export-btn-info"><div class="name">JSON</div><div class="desc">Full data, great for developers</div></div>
+        <span class="export-ext">.json</span>
+      </button>
+      <button class="export-btn" onclick="doSelectionExport('csv')">
+        <div class="export-btn-info"><div class="name">CSV</div><div class="desc">Spreadsheet-friendly, flat table</div></div>
+        <span class="export-ext">.csv</span>
+      </button>
+      <button class="export-btn" onclick="doSelectionExport('md')">
+        <div class="export-btn-info"><div class="name">Markdown</div><div class="desc">Full notes with metadata</div></div>
+        <span class="export-ext">.md</span>
+      </button>
+      <button class="export-btn" onclick="doSelectionExport('clean')">
+        <div class="export-btn-info"><div class="name">Beautified</div><div class="desc">Just the quotes and notes</div></div>
+        <span class="export-ext">.md</span>
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeSelectionExportModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
+// ── State ──────────────────────────────────────────────────────────────────
 var session           = null;
 var pdsBase           = 'https://bsky.social';
 var allCollections    = [];
 var activeCollection  = null;
 var activeAnnotations = [];
 var activeFilter      = 'all';
+
+// NEW: Browse-all state
+var browseAllRecords   = null; // null = not loaded yet
+var browseSelectedUris = new Set();
+var browseFilterType   = 'all';
+var browseFilterTag    = 'all';
+var browseDateFrom     = '';
+var browseDateTo       = '';
+
+// NEW: Tag export state
+var tagExportSelectedTags = new Set();
+var tagExportSourceAnnotations = [];
 
 var NSID = {
   collection:     'at.margin.collection',
@@ -250,6 +371,7 @@ var NSID = {
 
 var STORAGE_KEY = 'margin_at_creds';
 
+// ── Credential cache ───────────────────────────────────────────────────────
 function saveCreds(handle, password) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ handle: handle, password: password })); } catch(e) {}
 }
@@ -260,6 +382,7 @@ function clearCreds() {
   try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
 }
 
+// Pre-fill form on load
 (function prefill() {
   var c = loadCreds();
   if (!c) return;
@@ -267,6 +390,7 @@ function clearCreds() {
   document.getElementById('password-input').value = c.password || '';
 })();
 
+// ── AT Protocol helpers ────────────────────────────────────────────────────
 async function atRequest(path, params, method, body) {
   params = params || {};
   method = method || 'GET';
@@ -314,6 +438,7 @@ function uriFrom(field) {
   return null;
 }
 
+// ── Auth ───────────────────────────────────────────────────────────────────
 async function resolvePds(handle) {
   var did = null;
   try {
@@ -390,6 +515,7 @@ function onLoggedIn() {
 function logout() {
   clearCreds();
   session = null; allCollections = []; activeCollection = null; activeAnnotations = [];
+  browseAllRecords = null; browseSelectedUris = new Set();
   document.getElementById('login-screen').style.display  = '';
   document.getElementById('login-screen').style.width    = '100%';
   document.getElementById('sidebar').style.display       = 'none';
@@ -413,6 +539,7 @@ function hideLoginError() {
 document.getElementById('handle-input').addEventListener('keydown',   function(e) { if (e.key === 'Enter') login(); });
 document.getElementById('password-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') login(); });
 
+// ── Collections ────────────────────────────────────────────────────────────
 async function loadCollections() {
   var listEl = document.getElementById('collection-list');
   listEl.innerHTML = '<li class="sidebar-empty">Loading\u2026</li>';
@@ -444,6 +571,8 @@ async function loadCollections() {
 async function selectCollection(rec) {
   activeCollection = rec;
   activeFilter = 'all';
+  // Deselect browse-all
+  document.getElementById('browse-all-item').classList.remove('active');
   document.querySelectorAll('.collection-item').forEach(function(el) {
     el.classList.toggle('active', el.dataset.uri === rec.uri);
   });
@@ -487,6 +616,7 @@ async function fetchAnnotationsForCollection(collectionUri) {
     .map(function(r) { return r.value; });
 }
 
+// ── Render ─────────────────────────────────────────────────────────────────
 function renderLoading(msg) {
   document.getElementById('main-panel').innerHTML =
     '<div class="state-box"><div class="spinner"></div><div class="state-title">' + escHtml(msg || 'Loading\u2026') + '</div></div>';
@@ -521,13 +651,19 @@ function renderAnnotations(annotations, collName) {
       return '<button class="type-pill" data-type="' + t + '" onclick="setFilter(\'' + t + '\',this)">' + capitalize(t) + '</button>';
     }).join('');
 
+  // Collect tags for tag export button
+  var allTags = collectTags(annotations);
+
   panel.innerHTML =
     '<div class="toolbar">' +
       '<div class="toolbar-left">' +
         '<div class="toolbar-title">' + escHtml(collName) + '</div>' +
         '<div class="toolbar-meta" id="ann-count-label">' + annotations.length + ' annotation' + (annotations.length !== 1 ? 's' : '') + '</div>' +
       '</div>' +
-      '<div class="toolbar-right"><button class="btn btn-ghost" onclick="openExportModal()">Export</button></div>' +
+      '<div class="toolbar-right">' +
+        (allTags.length ? '<button class="btn btn-ghost" onclick="openTagExportModal()">Export by tag</button>' : '') +
+        '<button class="btn btn-ghost" onclick="openExportModal()">Export</button>' +
+      '</div>' +
     '</div>' +
     '<div class="filter-bar">' + pillsHtml + '</div>' +
     '<div class="annotations-wrap" id="annotations-wrap"></div>';
@@ -549,14 +685,9 @@ function renderCards(annotations) {
 }
 
 function cardHTML(rec, i) {
-  var val   = rec.value || {};
   var type  = annType(rec);
-  var url   = (val.target && val.target.source) || '';
-  var title = (val.target && val.target.title)  || '';
-  var quote = (val.target && val.target.selector && val.target.selector.exact) || '';
-  var note  = (val.body && val.body.value) || (typeof val.body === 'string' ? val.body : '');
-  var tags  = val.tags || [];
-  var date  = val.createdAt ? formatDate(val.createdAt) : '';
+  var f     = extractFields(rec);
+  var url   = f.url, title = f.title, quote = f.quote, note = f.note, tags = f.tags, date = f.date;
   var delay = 'animation-delay:' + Math.min(i * 30, 300) + 'ms';
 
   return '<div class="annotation-card" style="' + delay + '">' +
@@ -582,6 +713,7 @@ function setFilter(type, btn) {
   renderCards(activeAnnotations);
 }
 
+// ── Export ─────────────────────────────────────────────────────────────────
 function openExportModal() {
   var name = (activeCollection && activeCollection.value && activeCollection.value.name) || 'collection';
   document.getElementById('export-modal-desc').textContent =
@@ -623,17 +755,420 @@ function doExport(format) {
   }
 }
 
+// ── NEW: Tag Export ────────────────────────────────────────────────────────
+function collectTags(annotations) {
+  var tagSet = {};
+  annotations.forEach(function(rec) {
+    var tags = (rec.value && rec.value.tags) || [];
+    tags.forEach(function(t) { tagSet[t] = true; });
+  });
+  return Object.keys(tagSet).sort();
+}
+
+function openTagExportModal() {
+  tagExportSelectedTags = new Set();
+  tagExportSourceAnnotations = activeAnnotations;
+
+  var tags = collectTags(activeAnnotations);
+  var listEl = document.getElementById('tag-export-list');
+
+  if (!tags.length) {
+    listEl.innerHTML = '<span style="font-size:13px;color:var(--ink-faint);font-style:italic">No tags found in this collection.</span>';
+  } else {
+    listEl.innerHTML = tags.map(function(t) {
+      return '<button class="tag-filter-chip" data-tag="' + escHtml(t) + '" onclick="toggleTagExportChip(this)">' + escHtml(t) + '</button>';
+    }).join('');
+  }
+
+  updateTagExportCount();
+  document.getElementById('tag-export-modal').classList.add('open');
+}
+
+function closeTagExportModal() {
+  document.getElementById('tag-export-modal').classList.remove('open');
+}
+
+document.getElementById('tag-export-modal').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) closeTagExportModal();
+});
+
+function toggleTagExportChip(btn) {
+  var tag = btn.dataset.tag;
+  if (tagExportSelectedTags.has(tag)) {
+    tagExportSelectedTags.delete(tag);
+    btn.classList.remove('active');
+  } else {
+    tagExportSelectedTags.add(tag);
+    btn.classList.add('active');
+  }
+  updateTagExportCount();
+}
+
+function updateTagExportCount() {
+  var filtered = getTagFilteredAnnotations();
+  document.getElementById('tag-export-count').textContent =
+    filtered.length + ' annotation' + (filtered.length !== 1 ? 's' : '') + ' match';
+}
+
+function getTagFilteredAnnotations() {
+  if (!tagExportSelectedTags.size) return tagExportSourceAnnotations;
+  return tagExportSourceAnnotations.filter(function(rec) {
+    var tags = (rec.value && rec.value.tags) || [];
+    for (var t of tagExportSelectedTags) {
+      if (tags.indexOf(t) !== -1) return true;
+    }
+    return false;
+  });
+}
+
+function doTagExport(format) {
+  var filtered = getTagFilteredAnnotations();
+  if (!filtered.length) { toast('No annotations match the selected tags.', true); return; }
+  closeTagExportModal();
+
+  var collName = (activeCollection && activeCollection.value && activeCollection.value.name) || 'Annotations';
+  var tagStr   = Array.from(tagExportSelectedTags).join('_') || 'all';
+  var safeName = (collName + '_tag_' + tagStr).replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_\-]/g, '');
+
+  if (format === 'json') {
+    download(safeName + '.json', JSON.stringify(filtered.map(flattenAnnotation), null, 2), 'application/json');
+  } else if (format === 'csv') {
+    var rows = filtered.map(flattenAnnotation);
+    var cols = Object.keys(rows[0]);
+    var csv  = [cols.join(',')].concat(rows.map(function(r) {
+      return cols.map(function(c) { return csvCell(r[c]); }).join(',');
+    })).join('\n');
+    download(safeName + '.csv', csv, 'text/csv');
+  } else if (format === 'md') {
+    download(safeName + '.md', buildMarkdown(filtered, collName + ' [' + Array.from(tagExportSelectedTags).join(', ') + ']'), 'text/markdown');
+  } else if (format === 'clean') {
+    download(safeName + '_beautified.md', buildCleanMarkdown(filtered, collName), 'text/markdown');
+  }
+  toast('Exported ' + filtered.length + ' annotation' + (filtered.length !== 1 ? 's' : '') + ' by tag');
+}
+
+// ── NEW: Browse All ────────────────────────────────────────────────────────
+async function openBrowseAll() {
+  activeCollection = null;
+  document.getElementById('browse-all-item').classList.add('active');
+  document.querySelectorAll('#collection-list .collection-item').forEach(function(el) {
+    el.classList.remove('active');
+  });
+  browseSelectedUris = new Set();
+  browseFilterType   = 'all';
+  browseFilterTag    = 'all';
+  browseDateFrom     = '';
+  browseDateTo       = '';
+
+  if (browseAllRecords !== null) {
+    renderBrowseAll();
+    return;
+  }
+
+  renderLoading('Loading all annotations\u2026');
+
+  try {
+    var allRecords = [];
+    var nsids = [NSID.annotation, NSID.highlight, NSID.bookmark];
+    for (var i = 0; i < nsids.length; i++) {
+      var recs = await listRecordsAll(session.did, nsids[i]);
+      allRecords = allRecords.concat(recs.map(function(r) { r._nsid = nsids[i]; return r; }));
+    }
+    // Sort newest first
+    allRecords.sort(function(a, b) {
+      var da = (a.value && a.value.createdAt) || '';
+      var db = (b.value && b.value.createdAt) || '';
+      return db < da ? -1 : db > da ? 1 : 0;
+    });
+    browseAllRecords = allRecords;
+    var countEl = document.getElementById('browse-all-count');
+    if (countEl) countEl.textContent = allRecords.length;
+    renderBrowseAll();
+  } catch(e) {
+    renderError(e.message);
+  }
+}
+
+function getBrowseFiltered() {
+  var recs = browseAllRecords || [];
+  if (browseFilterType !== 'all') {
+    recs = recs.filter(function(r) { return annType(r) === browseFilterType; });
+  }
+  if (browseFilterTag !== 'all') {
+    if (browseFilterTag === '__none__') {
+      recs = recs.filter(function(r) { return !((r.value && r.value.tags) || []).length; });
+    } else {
+      recs = recs.filter(function(r) {
+        return ((r.value && r.value.tags) || []).indexOf(browseFilterTag) !== -1;
+      });
+    }
+  }
+  if (browseDateFrom) {
+    var from = new Date(browseDateFrom).getTime();
+    recs = recs.filter(function(r) {
+      var d = r.value && r.value.createdAt;
+      return d && new Date(d).getTime() >= from;
+    });
+  }
+  if (browseDateTo) {
+    var to = new Date(browseDateTo).getTime() + 86400000; // inclusive of end date
+    recs = recs.filter(function(r) {
+      var d = r.value && r.value.createdAt;
+      return d && new Date(d).getTime() < to;
+    });
+  }
+  return recs;
+}
+
+function renderBrowseAll() {
+  var panel = document.getElementById('main-panel');
+  var recs  = browseAllRecords || [];
+
+  if (!recs.length) {
+    panel.innerHTML =
+      '<div class="toolbar"><div class="toolbar-left"><div class="toolbar-title">All annotations</div></div></div>' +
+      '<div class="state-box"><div class="state-icon">&#10022;</div><div class="state-title">No annotations found</div>' +
+      '<div class="state-sub">Add some via the margin.at extension, then come back.</div></div>';
+    return;
+  }
+
+  // Collect types and tags
+  var types = [];
+  var tagSet = {};
+  recs.forEach(function(r) {
+    var t = annType(r);
+    if (types.indexOf(t) === -1) types.push(t);
+    ((r.value && r.value.tags) || []).forEach(function(tag) { tagSet[tag] = true; });
+  });
+  var allTags = Object.keys(tagSet).sort();
+
+  var typePillsHtml = '<button class="type-pill' + (browseFilterType === 'all' ? ' active' : '') + '" data-type="all" onclick="setBrowseTypeFilter(\'all\',this)">All</button>' +
+    types.map(function(t) {
+      return '<button class="type-pill' + (browseFilterType === t ? ' active' : '') + '" data-type="' + t + '" onclick="setBrowseTypeFilter(\'' + t + '\',this)">' + capitalize(t) + '</button>';
+    }).join('');
+
+  var tagOptions = '<option value="all">All tags</option>' +
+    (allTags.length ? allTags.map(function(t) { return '<option value="' + escHtml(t) + '"' + (browseFilterTag === t ? ' selected' : '') + '>' + escHtml(t) + '</option>'; }).join('') : '') +
+    '<option value="__none__"' + (browseFilterTag === '__none__' ? ' selected' : '') + '>— No tags —</option>';
+
+  panel.innerHTML =
+    '<div class="toolbar">' +
+      '<div class="toolbar-left">' +
+        '<div class="toolbar-title">All annotations</div>' +
+        '<div class="toolbar-meta" id="browse-count-label">' + recs.length + ' annotation' + (recs.length !== 1 ? 's' : '') + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="filter-bar" id="browse-filter-bar">' +
+      typePillsHtml +
+      '<select id="browse-tag-select" onchange="setBrowseTagFilter(this.value)" style="margin-left:4px;padding:4px 10px;border:1px solid var(--rule);border-radius:20px;font-size:12px;font-weight:500;background:none;color:var(--ink-light);font-family:\'DM Sans\',sans-serif;cursor:pointer;outline:none;">' +
+        tagOptions +
+      '</select>' +
+      '<div class="date-filter-wrap">' +
+        '<label>From</label>' +
+        '<input type="date" id="browse-date-from" value="' + browseDateFrom + '" onchange="setBrowseDateFrom(this.value)">' +
+        '<label>To</label>' +
+        '<input type="date" id="browse-date-to" value="' + browseDateTo + '" onchange="setBrowseDateTo(this.value)">' +
+        '<button class="btn btn-ghost" style="font-size:11px;padding:4px 9px" onclick="clearBrowseDates()">Clear</button>' +
+      '</div>' +
+    '</div>' +
+    '<div id="browse-select-bar" style="display:none" class="select-bar">' +
+      '<span class="select-bar-count" id="browse-select-count">0 selected</span>' +
+      '<button class="btn btn-ghost" onclick="browseSelectAll()">Select all visible</button>' +
+      '<button class="btn btn-ghost" onclick="browseClearSelection()">Clear</button>' +
+      '<button class="btn btn-ghost" onclick="openSelectionExportModal()" style="color:var(--accent);border-color:var(--accent)">Export selected</button>' +
+    '</div>' +
+    '<div class="annotations-wrap" id="browse-wrap"></div>';
+
+  renderBrowseCards();
+}
+
+function renderBrowseCards() {
+  var wrap = document.getElementById('browse-wrap');
+  if (!wrap) return;
+  var filtered = getBrowseFiltered();
+  var label = document.getElementById('browse-count-label');
+  if (label) label.textContent = filtered.length + ' annotation' + (filtered.length !== 1 ? 's' : '');
+
+  if (!filtered.length) {
+    wrap.innerHTML = '<div class="state-box" style="padding:40px 0"><div class="state-sub">No annotations match the current filters.</div></div>';
+    updateBrowseSelectBar();
+    return;
+  }
+
+  wrap.innerHTML = filtered.map(function(rec, i) {
+    return browseCardHTML(rec, i);
+  }).join('');
+
+  // Attach click handlers for selection
+  wrap.querySelectorAll('.annotation-card.selectable').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' || e.target.tagName === 'INPUT') return;
+      var uri = card.dataset.uri;
+      var cb  = card.querySelector('.card-checkbox');
+      if (browseSelectedUris.has(uri)) {
+        browseSelectedUris.delete(uri);
+        card.classList.remove('selected');
+        if (cb) cb.checked = false;
+      } else {
+        browseSelectedUris.add(uri);
+        card.classList.add('selected');
+        if (cb) cb.checked = true;
+      }
+      updateBrowseSelectBar();
+    });
+    // Keep checkbox in sync without double-firing
+    var cb = card.querySelector('.card-checkbox');
+    if (cb) {
+      cb.addEventListener('click', function(e) { e.stopPropagation(); });
+      cb.addEventListener('change', function() {
+        var uri = card.dataset.uri;
+        if (cb.checked) { browseSelectedUris.add(uri); card.classList.add('selected'); }
+        else { browseSelectedUris.delete(uri); card.classList.remove('selected'); }
+        updateBrowseSelectBar();
+      });
+    }
+  });
+
+  updateBrowseSelectBar();
+}
+
+function browseCardHTML(rec, i) {
+  var type  = annType(rec);
+  var f     = extractFields(rec);
+  var url   = f.url, title = f.title, quote = f.quote, note = f.note, tags = f.tags, date = f.date;
+  var delay = 'animation-delay:' + Math.min(i * 20, 300) + 'ms';
+  var uri   = rec.uri || '';
+  var isSelected = browseSelectedUris.has(uri);
+
+  return '<div class="annotation-card selectable' + (isSelected ? ' selected' : '') + '" data-uri="' + escHtml(uri) + '" style="' + delay + '">' +
+    '<input type="checkbox" class="card-checkbox"' + (isSelected ? ' checked' : '') + ' />' +
+    '<div class="card-header">' +
+      (title
+        ? '<div class="card-title" title="' + escHtml(title) + '">' + escHtml(title) + '</div>'
+        : '<div class="card-title" style="color:var(--ink-faint);font-style:italic;font-weight:400">Untitled</div>') +
+    '</div>' +
+    (url   ? '<div class="card-url"><a href="' + escHtml(url) + '" target="_blank">' + escHtml(truncate(url, 70)) + '</a></div>' : '') +
+    (quote ? '<div class="card-quote">'  + escHtml(quote) + '</div>' : '') +
+    (note  ? '<div class="card-note">'   + escHtml(note)  + '</div>' : '') +
+    '<div class="card-footer">' +
+      '<span class="type-badge ' + type + '">' + capitalize(type) + '</span>' +
+      (tags.length ? '<div class="tags-wrap">' + tags.map(function(t) { return '<span class="tag">' + escHtml(t) + '</span>'; }).join('') + '</div>' : '') +
+      (date ? '<span class="card-date">' + date + '</span>' : '') +
+    '</div>' +
+  '</div>';
+}
+
+function updateBrowseSelectBar() {
+  var bar = document.getElementById('browse-select-bar');
+  var countEl = document.getElementById('browse-select-count');
+  if (!bar) return;
+  var n = browseSelectedUris.size;
+  if (n > 0) {
+    bar.style.display = 'flex';
+    countEl.textContent = n + ' selected';
+  } else {
+    bar.style.display = 'none';
+  }
+}
+
+function browseSelectAll() {
+  var filtered = getBrowseFiltered();
+  filtered.forEach(function(r) { browseSelectedUris.add(r.uri); });
+  // Re-render cards to reflect state
+  renderBrowseCards();
+}
+
+function browseClearSelection() {
+  browseSelectedUris = new Set();
+  renderBrowseCards();
+}
+
+function setBrowseTypeFilter(type, btn) {
+  browseFilterType = type;
+  document.querySelectorAll('#browse-filter-bar .type-pill').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.type === type);
+  });
+  renderBrowseCards();
+}
+
+function setBrowseTagFilter(val) {
+  browseFilterTag = val;
+  renderBrowseCards();
+}
+
+function setBrowseDateFrom(val) {
+  browseDateFrom = val;
+  renderBrowseCards();
+}
+
+function setBrowseDateTo(val) {
+  browseDateTo = val;
+  renderBrowseCards();
+}
+
+function clearBrowseDates() {
+  browseDateFrom = ''; browseDateTo = '';
+  var f = document.getElementById('browse-date-from');
+  var t = document.getElementById('browse-date-to');
+  if (f) f.value = '';
+  if (t) t.value = '';
+  renderBrowseCards();
+}
+
+// ── NEW: Selection Export ──────────────────────────────────────────────────
+function openSelectionExportModal() {
+  var n = browseSelectedUris.size;
+  if (!n) { toast('No annotations selected.', true); return; }
+  document.getElementById('selection-export-desc').textContent =
+    n + ' annotation' + (n !== 1 ? 's' : '') + ' selected for export.';
+  document.getElementById('selection-export-modal').classList.add('open');
+}
+
+function closeSelectionExportModal() {
+  document.getElementById('selection-export-modal').classList.remove('open');
+}
+
+document.getElementById('selection-export-modal').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) closeSelectionExportModal();
+});
+
+function doSelectionExport(format) {
+  closeSelectionExportModal();
+  var selected = (browseAllRecords || []).filter(function(r) { return browseSelectedUris.has(r.uri); });
+  if (!selected.length) { toast('Nothing to export.', true); return; }
+
+  var date = new Date().toISOString().slice(0, 10);
+  var safeName = 'margin_selection_' + date;
+
+  if (format === 'json') {
+    download(safeName + '.json', JSON.stringify(selected.map(flattenAnnotation), null, 2), 'application/json');
+  } else if (format === 'csv') {
+    var rows = selected.map(flattenAnnotation);
+    var cols = Object.keys(rows[0]);
+    var csv  = [cols.join(',')].concat(rows.map(function(r) {
+      return cols.map(function(c) { return csvCell(r[c]); }).join(',');
+    })).join('\n');
+    download(safeName + '.csv', csv, 'text/csv');
+  } else if (format === 'md') {
+    download(safeName + '.md', buildMarkdown(selected, 'Selected Annotations'), 'text/markdown');
+  } else if (format === 'clean') {
+    download(safeName + '_beautified.md', buildCleanMarkdown(selected, 'Selected Annotations'), 'text/markdown');
+  }
+  toast('Exported ' + selected.length + ' annotation' + (selected.length !== 1 ? 's' : ''));
+}
+
+// ── Export helpers ─────────────────────────────────────────────────────────
 function flattenAnnotation(rec) {
-  var val = rec.value || {};
+  var f = extractFields(rec);
   return {
     uri:        rec.uri || '',
     type:       annType(rec),
-    url:        (val.target && val.target.source) || '',
-    title:      (val.target && val.target.title)  || '',
-    quote:      (val.target && val.target.selector && val.target.selector.exact) || '',
-    note:       (val.body && val.body.value) || (typeof val.body === 'string' ? val.body : ''),
-    tags:       (val.tags || []).join('; '),
-    created_at: val.createdAt || ''
+    url:        f.url,
+    title:      f.title,
+    quote:      f.quote,
+    note:       f.note,
+    tags:       f.tags.join('; '),
+    created_at: (rec.value && rec.value.createdAt) || ''
   };
 }
 
@@ -645,14 +1180,10 @@ function buildMarkdown(annotations, collName) {
     ''
   ];
   annotations.forEach(function(rec, i) {
-    var val   = rec.value || {};
     var type  = annType(rec);
-    var url   = (val.target && val.target.source) || '';
-    var title = (val.target && val.target.title)  || '';
-    var quote = (val.target && val.target.selector && val.target.selector.exact) || '';
-    var note  = (val.body && val.body.value) || (typeof val.body === 'string' ? val.body : '');
-    var tags  = val.tags || [];
-    var date  = val.createdAt ? formatDate(val.createdAt) : '';
+    var f     = extractFields(rec);
+    var url   = f.url, title = f.title, quote = f.quote, note = f.note, tags = f.tags;
+    var date  = (rec.value && rec.value.createdAt) ? formatDate(rec.value.createdAt) : '';
 
     lines.push('## ' + (title || url || ('Annotation ' + (i + 1))));
     var meta = ['**' + capitalize(type) + '**'];
@@ -672,9 +1203,8 @@ function buildMarkdown(annotations, collName) {
 function buildCleanMarkdown(annotations, collName) {
   var lines = ['# ' + collName, ''];
   annotations.forEach(function(rec) {
-    var val   = rec.value || {};
-    var quote = (val.target && val.target.selector && val.target.selector.exact) || '';
-    var note  = (val.body && val.body.value) || (typeof val.body === 'string' ? val.body : '');
+    var f     = extractFields(rec);
+    var quote = f.quote, note = f.note;
     if (!quote && !note) return;
     if (quote) { quote.split('\n').forEach(function(l) { lines.push('> ' + l); }); lines.push(''); }
     if (note)  { lines.push(note); lines.push(''); }
@@ -699,6 +1229,7 @@ function download(filename, content, type) {
   URL.revokeObjectURL(a.href);
 }
 
+// ── Account-wide backup ────────────────────────────────────────────────────
 async function exportAllAccount() {
   var modal      = document.getElementById('backup-modal');
   var statusEl   = document.getElementById('backup-status');
@@ -727,23 +1258,16 @@ async function exportAllAccount() {
     var cols = ['url', 'text', 'title', 'tags', 'color', 'created_at', 'type', 'uri'];
     var rows = allRecords.map(function(rec) {
       var val   = rec.value || {};
-      var type  = annType(rec);
-      var url   = (val.target && val.target.source) || '';
-      var text  = (val.target && val.target.selector && val.target.selector.exact) ||
-                  (val.body && val.body.value) ||
-                  (typeof val.body === 'string' ? val.body : '');
-      var title = (val.target && val.target.title) || '';
-      var tags  = (val.tags || []).join('; ');
+      var f     = extractFields(rec);
       var color = val.color || val.highlightColor || '';
-      var created_at = val.createdAt || '';
       return {
-        url:        url,
-        text:       text,
-        title:      title,
-        tags:       tags,
+        url:        f.url,
+        text:       f.quote || f.note,
+        title:      f.title,
+        tags:       f.tags.join('; '),
         color:      color,
-        created_at: created_at,
-        type:       type,
+        created_at: val.createdAt || '',
+        type:       annType(rec),
         uri:        rec.uri || ''
       };
     });
@@ -778,10 +1302,66 @@ function toast(msg, isError) {
   toastTimer = setTimeout(function() { el.className = ''; }, 2800);
 }
 
+// ── Utilities ──────────────────────────────────────────────────────────────
 function annType(rec) {
   var nsid = rec._nsid || (rec.uri && rec.uri.split('/')[2]) || 'annotation';
   return nsid.split('.').pop();
 }
+
+// Extract display fields across annotation / highlight / bookmark schemas.
+// margin.at stores each record type differently:
+//   annotation:  val.target.source, val.target.title, val.target.selector.exact, val.body.value
+//   highlight:   val.uri / val.url / val.target.source  (URL),
+//                val.title / val.target.title            (title),
+//                val.exact / val.text / val.quote / val.target.selector.exact  (quoted text),
+//                val.comment / val.note / val.body.value (note)
+//   bookmark:    val.uri / val.url / val.target.source  (URL),
+//                val.title / val.target.title            (title)
+function extractFields(rec) {
+  var val = rec.value || {};
+  // URL — bookmark: val.source, highlight: val.target.source, annotation: val.target.source
+  var url = (val.target && val.target.source)
+         || val.source
+         || val.uri || val.url
+         || (val.subject && val.subject.uri)
+         || '';
+  // Title — bookmark: val.title, annotation: val.target.title, highlight: not stored → derive from URL
+  var title = (val.target && val.target.title)
+            || val.title || val.name || '';
+  // If no title but we have a URL, derive a readable label from it
+  if (!title && url) {
+    try {
+      var u = new URL(url);
+      // Use hostname + pathname, strip trailing slash, decode
+      var path = decodeURIComponent(u.pathname).replace(/\/$/, '');
+      // Take the last path segment if it exists and looks meaningful
+      var parts = path.split('/').filter(function(p) { return p.length > 0; });
+      if (parts.length > 0) {
+        // Convert slug-style to readable: replace hyphens/underscores with spaces, title-case
+        var slug = parts[parts.length - 1].replace(/[-_]/g, ' ').replace(/\.[^.]+$/, '');
+        title = slug.charAt(0).toUpperCase() + slug.slice(1);
+      } else {
+        title = u.hostname;
+      }
+    } catch(e) {
+      title = url;
+    }
+  }
+  // Quoted text
+  var quote = (val.target && val.target.selector && val.target.selector.exact)
+            || val.exact || val.text || val.quote || val.selectedText || '';
+  // Note / body
+  var note = (val.body && val.body.value)
+           || (typeof val.body === 'string' ? val.body : '')
+           || val.comment || val.note || val.description || '';
+  // Tags
+  var tags = val.tags || [];
+  // Date
+  var date = val.createdAt ? formatDate(val.createdAt) : '';
+
+  return { url: url, title: title, quote: quote, note: note, tags: tags, date: date };
+}
+
 function capitalize(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
 function escHtml(s) {
   return String(s == null ? '' : s)
@@ -794,5 +1374,6 @@ function formatDate(iso) {
 }
 </script>
 <div class="fixed-attribution">Made with Claude &nbsp;&#183;&nbsp; <a href="https://github.com/AgileBuckle/margin-exporter" target="_blank">GitHub</a></div>
+
 </body>
 </html>
