@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -11,396 +10,370 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-–cream: #faf8f5;
-–white: #ffffff;
-–ink: #1a1814;
-–ink-light: #6b6560;
-–ink-faint: #b8b3ad;
-–rule: #e8e4de;
-–accent: #c85a2a;
-–accent-light: #f5ede7;
-–success: #2a7a4b;
-–error: #b83a2a;
-–header-h: 60px;
-}
+  :root {
+    --cream: #faf8f5;
+    --white: #ffffff;
+    --ink: #1a1814;
+    --ink-light: #6b6560;
+    --ink-faint: #b8b3ad;
+    --rule: #e8e4de;
+    --accent: #c85a2a;
+    --accent-light: #f5ede7;
+    --header-h: 60px;
+  }
 
-html, body {
-height: 100%;
-background: var(–cream);
-color: var(–ink);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 15px;
-line-height: 1.6;
--webkit-font-smoothing: antialiased;
-}
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ── Header ── */
-header {
-height: var(–header-h);
-background: var(–white);
-border-bottom: 1px solid var(–rule);
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 0 28px;
-position: sticky;
-top: 0;
-z-index: 100;
-}
+  /* ── Header ── */
+  header {
+    height: var(--header-h);
+    background: var(--white);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-.logo {
-font-family: ‘Lora’, serif;
-font-size: 18px;
-font-weight: 500;
-letter-spacing: -0.3px;
-color: var(–ink);
-display: flex;
-align-items: center;
-gap: 8px;
-text-decoration: none;
-}
+  .logo {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
 
-.header-right {
-display: flex;
-align-items: center;
-gap: 8px;
-}
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-.btn {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-padding: 9px 18px;
-border-radius: 7px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 13.5px;
-font-weight: 500;
-cursor: pointer;
-border: 1px solid transparent;
-transition: all 0.14s;
-outline: none;
-text-decoration: none;
-}
+  /* ── Buttons — use explicit selectors so <a> tags are styled correctly ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.14s;
+    outline: none;
+    text-decoration: none;
+    line-height: 1.2;
+    -webkit-appearance: none;
+  }
 
-.btn-primary {
-background: var(–ink);
-color: var(–white);
-padding: 9px 20px;
-}
-.btn-primary:hover { background: #2e2b27; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    padding: 9px 20px;
+  }
+  .btn-primary:hover { background: #2e2b27; color: var(--white); }
 
-.btn-ghost {
-background: none;
-color: var(–ink-light);
-border-color: var(–rule);
-font-size: 12.5px;
-padding: 6px 13px;
-}
-.btn-ghost:hover { background: var(–cream); color: var(–ink); }
+  .btn-ghost {
+    background: none;
+    color: var(--ink-light);
+    border-color: var(--rule);
+    font-size: 12.5px;
+    padding: 6px 13px;
+  }
+  .btn-ghost:hover { background: var(--cream); color: var(--ink); }
 
-/* ── Page layout ── */
-.page {
-max-width: 720px;
-margin: 0 auto;
-padding: 56px 28px 100px;
-}
+  /* ── Page layout ── */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 100px;
+  }
 
-/* ── Hero ── */
-.hero {
-margin-bottom: 56px;
-padding-bottom: 40px;
-border-bottom: 1px solid var(–rule);
-}
+  /* ── Hero ── */
+  .hero {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-.hero-eyebrow {
-font-family: ‘DM Mono’, monospace;
-font-size: 11px;
-letter-spacing: 1.4px;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 14px;
-}
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
 
-.hero h1 {
-font-family: ‘Lora’, serif;
-font-size: 38px;
-font-weight: 400;
-line-height: 1.2;
-letter-spacing: -0.5px;
-margin-bottom: 18px;
-color: var(–ink);
-}
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
 
-.hero-lead {
-font-size: 16px;
-color: var(–ink-light);
-line-height: 1.7;
-max-width: 580px;
-}
+  .hero-lead {
+    font-size: 16px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 580px;
+  }
 
-.hero-cta {
-margin-top: 28px;
-display: flex;
-gap: 12px;
-align-items: center;
-flex-wrap: wrap;
-}
+  .hero-lead a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
 
-/* ── Section ── */
-section {
-margin-bottom: 52px;
-}
+  .hero-cta {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-.section-label {
-font-family: ‘DM Mono’, monospace;
-font-size: 10px;
-letter-spacing: 1.4px;
-text-transform: uppercase;
-color: var(–ink-faint);
-margin-bottom: 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
+  /* ── Sections ── */
+  section { margin-bottom: 52px; }
 
-.section-label::after {
-content: ‘’;
-flex: 1;
-height: 1px;
-background: var(–rule);
-}
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-section h2 {
-font-family: ‘Lora’, serif;
-font-size: 22px;
-font-weight: 500;
-margin-bottom: 14px;
-color: var(–ink);
-}
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
 
-section p {
-color: var(–ink-light);
-line-height: 1.75;
-margin-bottom: 14px;
-font-size: 14.5px;
-}
+  section h2 {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
 
-section p:last-child { margin-bottom: 0; }
+  section p {
+    color: var(--ink-light);
+    line-height: 1.75;
+    margin-bottom: 14px;
+    font-size: 14.5px;
+  }
 
-/* ── Steps ── */
-.steps {
-display: flex;
-flex-direction: column;
-gap: 0;
-margin-top: 4px;
-}
+  section p:last-child { margin-bottom: 0; }
 
-.step {
-display: flex;
-gap: 20px;
-padding: 22px 0;
-border-bottom: 1px solid var(–rule);
-animation: fadeUp 0.3s ease both;
-}
+  section p a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
 
-.step:last-child { border-bottom: none; }
+  /* ── Steps ── */
+  .steps { display: flex; flex-direction: column; margin-top: 4px; }
 
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(8px); }
-to   { opacity: 1; transform: translateY(0); }
-}
+  .step {
+    display: flex;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
 
-.step:nth-child(1) { animation-delay: 0.05s; }
-.step:nth-child(2) { animation-delay: 0.10s; }
-.step:nth-child(3) { animation-delay: 0.15s; }
-.step:nth-child(4) { animation-delay: 0.20s; }
-.step:nth-child(5) { animation-delay: 0.25s; }
-.step:nth-child(6) { animation-delay: 0.30s; }
+  .step:last-child { border-bottom: none; }
 
-.step-num {
-flex-shrink: 0;
-width: 32px;
-height: 32px;
-border-radius: 50%;
-background: var(–accent-light);
-color: var(–accent);
-font-family: ‘DM Mono’, monospace;
-font-size: 13px;
-font-weight: 500;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 2px;
-}
+  .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
 
-.step-body h3 {
-font-size: 15px;
-font-weight: 500;
-color: var(–ink);
-margin-bottom: 5px;
-}
+  .step-body h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
 
-.step-body p {
-font-size: 13.5px;
-color: var(–ink-light);
-line-height: 1.6;
-margin: 0;
-}
+  .step-body p {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    margin: 0;
+  }
 
-.step-body a {
-color: var(–accent);
-text-decoration: none;
-border-bottom: 1px solid currentColor;
-}
+  .step-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
 
-/* ── Feature grid ── */
-.features {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px;
-margin-top: 4px;
-}
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    background: var(--cream);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+  }
 
-.feature-card {
-background: var(–white);
-border: 1px solid var(–rule);
-border-radius: 10px;
-padding: 20px 22px;
-transition: box-shadow 0.15s, border-color 0.15s;
-}
+  /* ── Feature grid ── */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 4px;
+  }
 
-.feature-card:hover {
-box-shadow: 0 3px 16px rgba(0,0,0,0.06);
-border-color: #d8d4ce;
-}
+  .feature-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 22px;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
 
-.feature-icon {
-font-size: 22px;
-margin-bottom: 10px;
-line-height: 1;
-}
+  .feature-card:hover {
+    box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    border-color: #d8d4ce;
+  }
 
-.feature-card h3 {
-font-size: 14px;
-font-weight: 500;
-color: var(–ink);
-margin-bottom: 5px;
-}
+  .feature-icon { font-size: 22px; margin-bottom: 10px; line-height: 1; }
 
-.feature-card p {
-font-size: 13px;
-color: var(–ink-faint);
-line-height: 1.55;
-margin: 0;
-}
+  .feature-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
 
-/* ── Export format table ── */
-.format-list {
-display: flex;
-flex-direction: column;
-gap: 12px;
-margin-top: 4px;
-}
+  .feature-card p {
+    font-size: 13px;
+    color: var(--ink-faint);
+    line-height: 1.55;
+    margin: 0;
+  }
 
-.format-row {
-display: flex;
-align-items: flex-start;
-gap: 14px;
-padding: 16px 18px;
-background: var(–white);
-border: 1px solid var(–rule);
-border-radius: 8px;
-transition: border-color 0.12s;
-}
+  /* ── Format list ── */
+  .format-list { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
 
-.format-row:hover { border-color: #d0cbc4; }
+  .format-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    transition: border-color 0.12s;
+  }
 
-.format-ext {
-font-family: ‘DM Mono’, monospace;
-font-size: 11px;
-color: var(–ink-faint);
-background: var(–cream);
-border: 1px solid var(–rule);
-padding: 2px 8px;
-border-radius: 4px;
-flex-shrink: 0;
-margin-top: 1px;
-}
+  .format-row:hover { border-color: #d0cbc4; }
 
-.format-info .name {
-font-size: 14px;
-font-weight: 500;
-color: var(–ink);
-margin-bottom: 3px;
-}
+  .format-ext {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
 
-.format-info .desc {
-font-size: 13px;
-color: var(–ink-faint);
-line-height: 1.5;
-}
+  .format-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
 
-/* ── Privacy note ── */
-.privacy-box {
-background: var(–accent-light);
-border: 1px solid #e8c5b0;
-border-radius: 10px;
-padding: 20px 22px;
-display: flex;
-gap: 14px;
-align-items: flex-start;
-margin-top: 4px;
-}
+  .format-desc { font-size: 13px; color: var(--ink-faint); line-height: 1.5; }
 
-.privacy-icon {
-font-size: 20px;
-flex-shrink: 0;
-margin-top: 1px;
-line-height: 1;
-}
+  /* ── Privacy box ── */
+  .privacy-box {
+    background: var(--accent-light);
+    border: 1px solid #e8c5b0;
+    border-radius: 10px;
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 4px;
+  }
 
-.privacy-box p {
-font-size: 13.5px;
-color: var(–ink-light);
-line-height: 1.65;
-margin: 0;
-}
+  .privacy-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; line-height: 1; }
+  .privacy-box p { font-size: 13.5px; color: var(--ink-light); line-height: 1.65; margin: 0; }
+  .privacy-box strong { color: var(--ink); }
 
-.privacy-box strong { color: var(–ink); }
+  /* ── Attribution ── */
+  .fixed-attribution {
+    position: fixed;
+    bottom: 14px;
+    left: 16px;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    z-index: 50;
+  }
 
-/* ── Footer ── */
-.fixed-attribution {
-position: fixed;
-bottom: 14px;
-left: 16px;
-font-size: 11.5px;
-color: var(–ink-faint);
-z-index: 50;
-}
+  .fixed-attribution a {
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: color 0.12s;
+  }
 
-.fixed-attribution a {
-color: var(–ink-faint);
-text-decoration: none;
-border-bottom: 1px solid var(–rule);
-transition: color 0.12s;
-}
+  .fixed-attribution a:hover { color: var(--ink-light); }
 
-.fixed-attribution a:hover { color: var(–ink-light); }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 10px; }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(–rule); border-radius: 10px; }
-
-@media (max-width: 600px) {
-.page { padding: 36px 18px 80px; }
-.hero h1 { font-size: 28px; }
-.features { grid-template-columns: 1fr; }
-header { padding: 0 18px; }
-}
+  @media (max-width: 600px) {
+    .page { padding: 36px 18px 80px; }
+    .hero h1 { font-size: 28px; }
+    .features { grid-template-columns: 1fr; }
+    header { padding: 0 18px; }
+  }
 </style>
-
 </head>
 <body>
 
@@ -413,20 +386,18 @@ header { padding: 0 18px; }
     margin exporter
   </a>
   <div class="header-right">
-    <a class="btn btn-ghost" href="index.html">← Back to app</a>
+    <a class="btn btn-ghost" href="index.html">&#8592; Back to app</a>
     <a class="btn btn-primary" href="index.html">Open app</a>
   </div>
 </header>
 
 <div class="page">
 
-  <!-- Hero -->
-
   <div class="hero">
-    <div class="hero-eyebrow">margin.at · Annotation Exporter</div>
+    <div class="hero-eyebrow">margin.at &middot; Annotation Exporter</div>
     <h1>View and export<br>your annotations</h1>
     <p class="hero-lead">
-      A lightweight, open-source tool for browsing your <a href="https://margin.at" style="color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor" target="_blank">margin.at</a> highlights, annotations, and bookmarks — and downloading them in a format you can actually use.
+      A lightweight, open-source tool for browsing your <a href="https://margin.at" target="_blank">margin.at</a> highlights, annotations, and bookmarks &mdash; and downloading them in a format you can actually use.
     </p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="index.html">Open the app</a>
@@ -434,20 +405,12 @@ header { padding: 0 18px; }
     </div>
   </div>
 
-  <!-- What is this -->
-
   <section>
     <div class="section-label">About</div>
     <h2>What is this?</h2>
-    <p>
-      margin.at is a browser extension that lets you annotate, highlight, and bookmark anything on the web. It stores all your data on the <strong>AT Protocol</strong> — the same open infrastructure that powers Bluesky — meaning your annotations belong to you.
-    </p>
-    <p>
-      This exporter connects directly to your personal data server (PDS) using your AT Protocol credentials, fetches your records, and gives you a clean interface to browse and download them. No middleman. No server-side storage. Everything runs in your browser.
-    </p>
+    <p>margin.at is a browser extension that lets you annotate, highlight, and bookmark anything on the web. It stores all your data on the <strong>AT Protocol</strong> &mdash; the same open infrastructure that powers Bluesky &mdash; meaning your annotations belong to you.</p>
+    <p>This exporter connects directly to your personal data server (PDS) using your AT Protocol credentials, fetches your records, and gives you a clean interface to browse and download them. No middleman. No server-side storage. Everything runs in your browser.</p>
   </section>
-
-  <!-- Features -->
 
   <section>
     <div class="section-label">Features</div>
@@ -481,153 +444,109 @@ header { padding: 0 18px; }
       <div class="feature-card">
         <div class="feature-icon">🌐</div>
         <h3>Any PDS supported</h3>
-        <p>Works with any AT Protocol PDS — bsky.social or self-hosted. Auto-detected from your handle.</p>
+        <p>Works with any AT Protocol PDS &mdash; bsky.social or self-hosted. Auto-detected from your handle.</p>
       </div>
     </div>
   </section>
-
-  <!-- How to use -->
 
   <section>
     <div class="section-label">How to use</div>
     <h2>Getting started</h2>
     <div class="steps">
-
-```
-  <div class="step">
-    <div class="step-num">1</div>
-    <div class="step-body">
-      <h3>Get a margin.at app password</h3>
-      <p>
-        Go to <a href="https://bsky.app/settings/app-passwords" target="_blank">bsky.app/settings/app-passwords</a> and create a new app password. Give it a name like "margin exporter". Copy it — you'll only see it once.
-      </p>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Get an app password</h3>
+          <p>Go to <a href="https://bsky.app/settings/app-passwords" target="_blank">bsky.app/settings/app-passwords</a> and create a new app password. Give it a name like "margin exporter". Copy it &mdash; you'll only see it once.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Sign in on the app</h3>
+          <p>Enter your AT Protocol handle (e.g. <code>yourname.bsky.social</code>) and the app password you just created. Press <strong>Connect</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Browse your collections</h3>
+          <p>Once signed in, your margin.at collections appear in the left sidebar. Click any collection to load its annotations in the main panel.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Filter by type</h3>
+          <p>Use the filter pills at the top of the main panel to show only annotations, highlights, or bookmarks within the selected collection.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Export a collection</h3>
+          <p>Click the <strong>Export</strong> button in the toolbar to download the current collection. Choose from JSON, CSV, Markdown, or Beautified format.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h3>Back up everything</h3>
+          <p>Click <strong>Export all</strong> in the header to download every annotation, highlight, and bookmark in your entire account as a single CSV file.</p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">2</div>
-    <div class="step-body">
-      <h3>Sign in on the app</h3>
-      <p>
-        Open the exporter and enter your AT Protocol handle (e.g. <code style="font-family:'DM Mono',monospace;font-size:12.5px;background:var(--cream);padding:1px 5px;border-radius:3px;border:1px solid var(--rule)">yourname.bsky.social</code>) and the app password you just created. Press <strong>Connect</strong>.
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">3</div>
-    <div class="step-body">
-      <h3>Browse your collections</h3>
-      <p>
-        Once signed in, your margin.at collections appear in the left sidebar. Click any collection to load its annotations in the main panel.
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">4</div>
-    <div class="step-body">
-      <h3>Filter by type</h3>
-      <p>
-        Use the filter pills at the top of the main panel to show only annotations, highlights, or bookmarks within the selected collection.
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">5</div>
-    <div class="step-body">
-      <h3>Export a collection</h3>
-      <p>
-        Click the <strong>Export</strong> button in the toolbar to download the current collection. Choose from JSON, CSV, Markdown, or Beautified format.
-      </p>
-    </div>
-  </div>
-
-  <div class="step">
-    <div class="step-num">6</div>
-    <div class="step-body">
-      <h3>Back up everything</h3>
-      <p>
-        Click <strong>Export all</strong> in the header to download every annotation, highlight, and bookmark in your entire account as a single CSV file.
-      </p>
-    </div>
-  </div>
-
-</div>
-```
-
   </section>
-
-  <!-- Export formats -->
 
   <section>
     <div class="section-label">Export formats</div>
     <h2>What each format gives you</h2>
     <div class="format-list">
-
-```
-  <div class="format-row">
-    <span class="format-ext">.json</span>
-    <div class="format-info">
-      <div class="name">JSON</div>
-      <div class="desc">Full structured data including all fields. Best for developers or importing into other tools programmatically.</div>
+      <div class="format-row">
+        <span class="format-ext">.json</span>
+        <div>
+          <div class="format-name">JSON</div>
+          <div class="format-desc">Full structured data including all fields. Best for developers or importing into other tools programmatically.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <span class="format-ext">.csv</span>
+        <div>
+          <div class="format-name">CSV</div>
+          <div class="format-desc">Flat table with columns for URL, title, quote, note, tags, type, and date. Opens directly in Excel, Numbers, or Google Sheets.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <span class="format-ext">.md</span>
+        <div>
+          <div class="format-name">Markdown</div>
+          <div class="format-desc">Full notes with formatted headings, blockquote-style quotes, metadata (type, date, source link), and tags. Great for Obsidian, Notion, or any Markdown app.</div>
+        </div>
+      </div>
+      <div class="format-row">
+        <span class="format-ext">.md</span>
+        <div>
+          <div class="format-name">Beautified</div>
+          <div class="format-desc">Just the quotes and notes &mdash; no metadata, no clutter. Clean reading experience. Perfect for a personal reading digest or sharing.</div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="format-row">
-    <span class="format-ext">.csv</span>
-    <div class="format-info">
-      <div class="name">CSV</div>
-      <div class="desc">Flat table with columns for URL, title, quote, note, tags, type, and date. Opens directly in Excel, Numbers, or Google Sheets.</div>
-    </div>
-  </div>
-
-  <div class="format-row">
-    <span class="format-ext">.md</span>
-    <div class="format-info">
-      <div class="name">Markdown</div>
-      <div class="desc">Full notes with formatted headings, blockquote-style quotes, metadata (type, date, source link), and tags. Great for Obsidian, Notion, or any Markdown app.</div>
-    </div>
-  </div>
-
-  <div class="format-row">
-    <span class="format-ext">.md</span>
-    <div class="format-info">
-      <div class="name">Beautified</div>
-      <div class="desc">Just the quotes and notes — no metadata, no clutter. Clean reading experience. Perfect for a personal reading digest or sharing.</div>
-    </div>
-  </div>
-
-</div>
-```
-
   </section>
 
-  <!-- Privacy -->
-
   <section>
-    <div class="section-label">Privacy & security</div>
+    <div class="section-label">Privacy &amp; security</div>
     <h2>How your data is handled</h2>
     <div class="privacy-box">
       <div class="privacy-icon">🔒</div>
-      <p>
-        <strong>Everything runs in your browser.</strong> Your credentials and annotation data never leave your device or pass through any server we control. The app talks directly to your AT Protocol personal data server (PDS) — the same server that margin.at uses. Your app password is stored only in your browser's <code style="font-family:'DM Mono',monospace;font-size:12px">localStorage</code> for convenience and can be cleared at any time by clicking <strong>Sign out</strong>.
-      </p>
+      <p><strong>Everything runs in your browser.</strong> Your credentials and annotation data never leave your device or pass through any server we control. The app talks directly to your AT Protocol PDS. Your app password is stored only in your browser's <code>localStorage</code> and can be cleared at any time by clicking <strong>Sign out</strong>.</p>
     </div>
   </section>
-
-  <!-- Source -->
 
   <section>
     <div class="section-label">Open source</div>
     <h2>Built in the open</h2>
-    <p>
-      This tool is a single HTML file with no build tooling, no dependencies, and no tracking. You can inspect every line of code, host your own copy, or contribute improvements.
-    </p>
-    <p>
-      <a href="https://github.com/AgileBuckle/margin-exporter" target="_blank" style="color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor">View the source on GitHub →</a>
-    </p>
+    <p>This tool is a single HTML file with no build tooling, no dependencies, and no tracking. You can inspect every line of code, host your own copy, or contribute improvements.</p>
+    <p><a href="https://github.com/AgileBuckle/margin-exporter" target="_blank">View the source on GitHub &rarr;</a></p>
   </section>
 
 </div>
