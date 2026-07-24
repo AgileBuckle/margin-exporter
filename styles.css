@@ -962,6 +962,15 @@ code {
 .privacy-box p { font-size: 13.5px; color: var(--ink-light); line-height: 1.65; margin: 0; }
 .privacy-box strong { color: var(--ink); }
 
+.about-layout .feature-card { transition: none; }
+.about-layout .feature-card:hover {
+  box-shadow: none;
+  border-color: var(--rule);
+}
+
+.about-layout .format-row { transition: none; }
+.about-layout .format-row:hover { border-color: var(--rule); }
+
 /* ════════════════════════════════════════════════════════════════════════════ */
 /*  Responsive */
 /* ════════════════════════════════════════════════════════════════════════════ */
